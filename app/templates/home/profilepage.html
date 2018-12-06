@@ -1,0 +1,33 @@
+{% import "bootstrap/wtf.html" as wtf %} {% extends "base.html" %} {% block title %}View Profile{% endblock %}
+{% block body %}
+<div id="mainwrap">
+{% if edit_profile %}
+    <div class="content-section">
+    <div class="outer">
+        <div class="middle">
+            <img src="../../static/img/avatar.png" id="avatar">
+            <div class="inner">
+                <div class="center">
+
+                {{ wtf.quick_form(form) }}
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    {% else %}
+
+        <img src="../../static/img/avatar.png" id="avatar">
+        <p id="cname">{{current_user.first_name}} {{current_user.last_name}}</p>
+        <br>
+        <div> <span id="mail"><i class="fa fa-envelope"></i><a href="mailto:{{current_user.email}}">  {{current_user.email}}</a></span></div>
+        <br>
+            <div style="text-align: center">
+                            <hr class="intro-divider">
+                            <a href="{{ url_for('home.edit_profile') }}" class="btn btn-default btn-lg">
+                                <i class="fa fa-plus"></i> Edit
+                            </a>
+            </div>
+ {%  endif %}
+</div>
+{% endblock %}

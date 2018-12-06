@@ -1,0 +1,58 @@
+{% import "bootstrap/utils.html" as utils %} {% extends "base.html" %} {% block title %}Employees{% endblock %} {% block body %}
+<div class="content-section">
+    <div class="outer">
+        <div class="middle">
+            <div class="inner">
+                <br/> {{ utils.flashed_messages() }}
+                <br/>
+                <h1 style="text-align:center;">Employees - {{ company.company_name }}</h1>
+                {% if employees %}
+                <hr class="intro-divider">
+                <div class="center">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th width="15%"> Name </th>
+                                <th width="15%"> Action </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for employee in employees %}
+                            <!--<tr style="background-color: #007ee5; color: white;">
+                                <td> <i class="fa fa-key"></i> Admin </td>
+                                <td> N/A </td>
+                                <td> N/A </td>
+                                <td> N/A </td>
+                                <td> N/A </td>
+                            </tr>-->
+                            <tr>
+                                <td> {{ employee.first_name }} {{ employee.last_name }} </td>
+                                <td>
+                                    <a href="{{ url_for('admin.delete_employee', id=employee.id) }}" class="red">
+                                         Delete
+                                    </a>
+                                    <a href="{{ url_for('admin.edit_employee', id=employee.id) }}" class="red">
+                                         Edit
+                                    </a>
+                                </td>
+                            </tr>
+                             {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                {% endif %}
+            </div>
+        <div style="text-align: center">
+                        <hr class="intro-divider">
+                        <a href="{{ url_for('admin.add_employee', id=company.id) }}" class="btn btn-default btn-lg">
+                            <i class="fa fa-plus"></i> Add Employee
+                        </a>
+                        <a href="{{ url_for('admin.invite_employee', id=company.id) }}" class="btn btn-default btn-lg">
+                            <i class="fa fa-plus"></i> Invite Employee
+                        </a>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+{% endblock %}
