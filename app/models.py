@@ -9,6 +9,10 @@ class Role(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(60))
 
+    @property
+    def display_name(self):
+        return ' '.join(s.capitalize() for s in self.name.split('_'))
+
 
 class User(UserMixin, db.Model):
     """

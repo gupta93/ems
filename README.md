@@ -7,7 +7,7 @@ Steps to run :
     export SECRET_KEY=2b20f139aadd936dd71ae7bd2a9e46ca62a6473e3c09d153
     export MAIL_USERNAME=<your email>
     export MAIL_PASSWORD=<your password>
-    
+    export HOST_IP=localhost:5000>
 3. flask db init
    flask db migrate
    flask db upgrade

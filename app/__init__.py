@@ -11,7 +11,7 @@ from config import app_config
 
 db  = SQLAlchemy()
 login_manager = LoginManager()
-
+HOST_IP = os.getenv('HOST_IP')
 # db variable initialization
 # create_app functiongiven a configuration name, loads the correct
 # configuration from the config.py file, as well as the configurations

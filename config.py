@@ -27,8 +27,15 @@ class ProductionConfig(Config):
 
     DEBUG = False
 
+class HerokuConfig(ProductionConfig):
+    """
+    Production configurations
+    """
+
+    DEBUG = False
 
 app_config = {
     'development': DevelopmentConfig,
-    'production': ProductionConfig
+    'production': ProductionConfig,
+    'heroku': HerokuConfig
 }

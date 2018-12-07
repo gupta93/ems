@@ -2,7 +2,7 @@ from flask import abort, flash, redirect, render_template, url_for
 from flask_login import current_user, login_required
 
 from . import admin
-from .. import db
+from .. import db,HOST_IP
 from ..models import User, Company, Mapping, Role, Invites
 from forms import CompanyForm, UserForm, UserEditForm, InviteForm
 from functions import send_mail
@@ -215,7 +215,7 @@ def invite_employee(id):
     form = InviteForm()
     if form.validate_on_submit():
        email = form.email.data
-       link = 'http://localhost:5000/invite?email={}'.format(email)
+       link = 'http://{}/invite?email={}'.format(HOST_IP, email)
        text = 'You have been invited to join EMS by {}. Use link : {}'.format(company.company_name, link)
        invite = Invites(email=email, company_id = company.id)
        db.session.add(invite)
